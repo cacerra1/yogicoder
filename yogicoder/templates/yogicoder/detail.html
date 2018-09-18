@@ -1,0 +1,32 @@
+{% extends "yogicoder/base.html" %}
+
+{% block title %} Yogi Coder Course Description{% endblock %}
+
+{%  block content %}
+
+
+<div class="container">
+    <h3>The Student is: <i>"{{student}}"</i></h3>
+    {% if student.active == False %}
+        <h4> Sorry, You are inactive </h4>
+
+    {%  else %}
+        <h4> Your Status is <span> "Active" </span>, Please Proceed</h4>
+        <br>{{ student.fname }}
+        <br>{{ student.lname }}
+        <br>{{ student.email }}
+        <br>
+        <h2> The Classes {{ student.fname }} has taken are:</h2>
+        {%  for x in hw %}
+            <br><li>{{ x.title }}</li>
+       {% endfor %}
+    {% endif %}
+
+</div>
+
+
+
+
+{% endblock %}
+
+

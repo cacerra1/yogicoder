@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+    <style>
+        table{
+            width: 500px;
+        }
+
+        th, td {
+        text-align: center;
+        min-width:200px;
+        }
+
+        td:nth-child(1), th:nth-child(1) {
+            min-width: 100px;
+        }
+
+        thead {
+            background-color: #000;
+            color: #fff;
+        }
+
+        thead tr {
+            display: block;
+            position: relative;
+        }
+
+    tbody {
+        display: block;
+        overflow: auto;
+       overflow-x:hidden;
+        width: 100%;
+        height: 100px;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    </style>
+<body>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nummer</th>
+            <th>Deutsch</th>
+            <th>Englisch</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>eins</td>
+            <td>one</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>zwei</td>
+            <td>two</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>drei</td>
+            <td>three</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>vier</td>
+            <td>four</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>fünf</td>
+            <td>five</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>sechs</td>
+            <td>six</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>sieben</td>
+            <td>seven</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>acht</td>
+            <td>eight</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>neun</td>
+            <td>nine</td>
+        </tr>
+
+    </tbody>
+</table>
+
+<script>
+   eval('var $=x($,_){return(_)?[].slice.call(zAll($)).forEach(_):z($)},$s=x(e,r,v){$(e,x(_){_.style[r]=v})},$o=x(e,v,f){$(e,x(_){_.addEventListener(v,f)})}'.replace(/x/g,"function").replace(/z/g,'document.querySelector'));
+   function colSort(a, colIndex){
+      a.sort(sortFunction);
+      function sortFunction(a, b) {
+          if (a[colIndex] === b[colIndex]) {
+              return 0;
+          }
+          else {
+              return (a[colIndex] < b[colIndex]) ? -1 : 1;
+          }
+      }
+      return a;
+   }
+   var tableContent = [],count = 0;
+    $('tbody tr', function(_){
+      tableContent[count]=[];
+      var cols = _.querySelectorAll('td');
+      for (i=0;i<cols.length;i++){
+        tableContent[count][i]=cols[i].innerHTML;
+      }
+      count++;
+      });
+
+    var sortCol=function(colToSort){
+      var temp = [];
+          $('thead tr th', function(_){
+            temp.push(_.innerHTML);
+          })
+          //var cSort = temp.indexOf(this.innerHTML);
+          var newSort = colSort(tableContent,colToSort-1);
+          count =0;
+          $('tbody tr', function(_){
+            var cols = _.querySelectorAll('td');
+            for (i=0;i<cols.length;i++){
+              cols[i].innerHTML=newSort[count][i];
+          }
+          count++;
+        });
+    }
+    sortCol(2);
+
+</script>
+
+</body>
+</html>
+

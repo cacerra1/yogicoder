@@ -1,0 +1,52 @@
+{% extends "yogicoder/base.html" %}
+
+{% block title %} YogiCoder Courses {% endblock %}
+
+{%  block content %}
+      <script type="text/javascript">
+function init() {
+    var sorter = tsorter.create('myTable');
+}
+
+window.onload = init;
+</script>
+
+<div class="container">
+    <h1><i class="fas fa-chalkboard-teacher"></i> Yogi Coder Courses </h1>
+<br>
+<table id="myTable"  class="table table-striped table-hover" border='2'  style="width:100%" >
+    <thead>
+ <tr>
+   <th><center>Title</center></th>
+   <th ><center>Description </center></th>
+
+     <th ><center>Year Produced</center></th>
+
+     <th  ><center>Series</center></th>
+
+  </tr>
+ </thead>
+    <TR >
+    {% for t in training %}
+        {% if  t.title != "None" %}
+        <TD class="c3" align="center">{{ t.title }}</TD>
+        <TD class="c3" align="left">{{ t.description}}</TD>
+        <TD class="c3" align="center">{{ t.yearProd| date:"Y" }}</TD>
+
+        <TD class="c3" align="center" ><h6>{{ t.series }}</h6></TD>
+        {% endif %}
+    </TR>
+   {% endfor %}
+    </table>
+</div>
+
+
+  <script type="text/javascript" src="yogicoder/js/jquery.js"></script>
+<script type="text/javascript" src="yogicoder/js/terrill-js-snip.js"></script>
+    <script type="text/javascript" src="yogicoder/js/js-sort-terrill2.js"></script>
+{% endblock %}
+
+
+
+
+

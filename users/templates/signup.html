@@ -1,0 +1,24 @@
+
+{% extends "yogicoder/base.html" %}
+
+
+{% block title %} THANKS! {% endblock %}
+{%  block content %}
+<div class="container">
+    <h2>Resgister</h2>
+    <hr>
+        <table class="table-hover">
+{#            <form method="post">#}
+                <form action="{% url 'users:signup_form' %}" method="post">
+                  {% csrf_token %}
+                  {{ form.as_table}}
+            </form>
+            <button type="submit">Submit</button>
+         </table>
+    <br>
+
+<br>
+<hr>
+</div>
+
+{% endblock %}

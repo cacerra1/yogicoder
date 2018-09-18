@@ -1,0 +1,26 @@
+{% extends "yogicoder/base.html" %}
+
+{% block title %} YogiCoder Contact Form {% endblock %}
+{%  block content %}
+<div class="container">
+      <div class="col-md-12">
+    <h1><i class="far fa-envelope"></i> Contact Us </h1>
+          <hr>
+
+           <table class="table-hover">
+<form action="{% url 'yogicoder:contactform' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_table}}
+    <input type="submit" value="Submit">
+
+</form>
+
+           </table>
+          <br>
+
+
+   <br>
+<hr>
+</div>
+</div>
+{% endblock %}
